@@ -1,0 +1,56 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+textarea {
+  resize: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.mic-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #4caf50;
+  border: none;
+  cursor: pointer;
+  mask-image: url('mic-icon.png');
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  transition: background-color 0.3s;
+}
+
+.mic-icon.speaking {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+select {
+  padding: 8px;
+  font-size: 14px;
+}

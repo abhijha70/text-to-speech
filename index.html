@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-to-Speech Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <textarea id="textToRead" rows="4" cols="50" placeholder="Enter text to be spoken..."></textarea>
+  <button onclick="speak()" id="micButton" class="mic-icon"></button>
+
+  <select name="volume-sound" id="select">
+    <option value="" aria-disabled="true">Choose volume</option>
+    <option value="0.25">25%</option>
+    <option value="0.50">50%</option>
+    <option value="0.75" selected>75%</option>
+    <option value="1.00">100%</option>
+  </select>
+
+  <script>
+    function speak() {
+      const volumeSelector = parseFloat(document.querySelector('#select').value);
+      const textarea = document.querySelector('#textToRead').value;
+      let talk = new SpeechSynthesisUtterance(textarea);
+      talk.volume = volumeSelector;
+      window.speechSynthesis.speak(talk);
+      animateMic(); // Add animation function
+    }
+
+    function animateMic() {
+      const micButton = document.getElementById('micButton');
+      micButton.classList.add('speaking');
+      setTimeout(() => {
+        micButton.classList.remove('speaking');
+      }, 1000); // Adjust the duration of the animation
+    }
+  </script>
+
+</body>
+</html>
